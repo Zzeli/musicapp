@@ -1,0 +1,51 @@
+@function a(){
+    @return 30px; 
+}
+$size: a();
+@debug $size;
+@mixin cude($size){
+    width:$size;
+    height: $size;
+}
+@mixin rect($w,$h){
+    width: $w;
+    height: $h;
+}
+@mixin circle($size){
+    @include cude($size);
+    border-radius: 50%;
+}
+@function bg(){
+    $r:floor(random()*255);
+    $g:floor(random()*100);
+    $b:floor(random()*100);
+    $a:floor(random()*4 + 3)/10;
+    $color:rgba($r,$g,$b,$a);
+    @return $color;
+}   
+ @debug $size;
+.box{
+    background:bg();
+    @include circle($size);
+}
+
+@mixin center(){
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+@mixin tb(){
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+@mixin lr(){
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
